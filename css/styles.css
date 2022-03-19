@@ -1,0 +1,273 @@
+/*
+Colors used
+
+Text Color (Dark Gray): #2b2b2b;
+Primary Color (Purple): #357b70;
+Secondary Color (Orange): #e0b354;
+Background: #869FDB;
+Font: #4d0404;
+Links before visit: #cfe2f3;
+Links after visit: #032419;
+
+ add your responsive classes at the very end of your CSS file, overwriting any rules that might have come before
+ */
+
+:root{
+  --body-bg-color-all: #869FDB;
+  --body-color-all: #4d0404;
+  --link-color: #142E45;
+  --link-visited-color: #032419;
+  --link-active-color: #357b70;
+  --primary-button-bg-color: #cdd6dd;
+  --primary-button-color: rgb(94, 35, 27);
+  --primary-button-bdr-bottom: rgb(45, 7, 7);
+  --secondary-button-bg-color: #20124d; 
+  --secondary-button-color: #869FDB; 
+  --grid-item-bg-color: lightgray; 
+  --color-0-sun: #edc655;
+  --color-50-sun: #fcffad;
+  --color-100-sun: #f76414;
+}
+ 
+body{
+  margin:20px;
+  padding: 10px;
+  border: 10px;
+  background-color: var(--body-bg-color-all);
+  font-family: 'Architects Daughter', cursive;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--body-color-all);
+ }
+
+a{
+  color: var(--link-color);
+  transition: 0.2s opacity;
+}
+
+a:visited{   /*comes first*/
+  color: var(--link-visited-color);
+}
+
+a:hover, a:focus{     /*comes 2nd*/
+  /*No underlining when hovering over a link*/
+  text-decoration: none;
+}
+
+a:active{    /*comes 3rd*/
+  color: var(--link-active-color);
+  text-decoration: none;
+}
+
+a:hover, a:focus{
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+button, .button, .cv_button{
+  border: none;
+  display: inline-block;
+  font-family: inherit;
+  background-color: var(--primary-button-bg-color);
+  color: var(--primary-button-color);
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 30px;
+  border-bottom: 80px var(--primary-button-bdr-bottom);
+  transition: 0.2s opacity; /*transition: [transition-property] [transition-duration] [transition-timing-function] [transition-delay];*/ 
+}
+
+button:hover, button:focus, .button:hover, .button:focus{
+  cursor: pointer; /*lets the mouse pointer appear as a hand when hovering over the button*/
+  opacity: 0.8; /*reduces the opacity of the button to 80%*/
+}
+
+.button_secondary{  /*When referring to classes in your CSS, you prefix the class name with a period*/
+  background-color: var(--secondary-button-bg-color);
+  color: var(--secondary-button-color);
+  border-radius: 10px;
+}
+
+th{
+  font-size: 30px;
+  font-weight: 700;
+}
+
+td{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.profile{
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.profile{
+  min-width: 700px;
+  max-width: 700px;
+}
+
+.profile_portrait{
+  float: left;
+  width: 250px;
+  margin-right: 40px;
+  border-radius: 50%;
+}
+
+.page-footer{
+  clear: both;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+.page-header{
+  display: flex;
+  width: 100%;
+  padding: 20px;
+}
+
+.page-header_item{
+  flex-grow: 0 1 200px;
+}
+
+.page-header_item:last-child{
+  flex-grow: 1;
+  text-align: right;
+}
+
+.navigation-list{
+  list-style-type: none;
+}
+
+.navigation-list li{
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.page-header_item_img{
+  width: 10%;
+}
+
+/*start grid fallback*/
+.grid_item{
+  display: inline-block;
+}
+/*end grid fallback*/
+
+@supports (display: grid) {
+  .grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* fr instead of pixel solely for CSS grid*/
+    grid-gap: 20px;
+    text-align: center;
+  }
+
+  .grid_item{
+    background-color: var(--grid-item-bg-color);
+    padding: 20px;
+  }
+
+.grid_item:last-child{
+    grid-column: 3/3;
+    grid-row: 1/3;
+  }
+}
+
+@media all and (max-width: 500px){
+  .grid{
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+  .grid_item:last-child{
+    grid-column: auto/auto;
+    grid-row:auto/auto;
+  }
+  h1{
+    font-size: 22px;
+  }
+}
+
+@media all and (min-width: 500px) and (max-width: 750px){
+  .grid{
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
+  .grid-item:last-child{
+    grid-column: auto/auto;
+    grid-row: auto/auto;
+  }
+  h1{
+    font-size: 22px;
+  }
+}
+
+@keyframes color-change{
+  0%{
+    fill:var(--color-0-sun);
+  }
+  50%{
+    fill:var(--color-50-sun);
+  }
+  100%{
+    fill:var(--color-100-sun);
+  }
+}
+
+.sun{
+  animation: 4s color-change infinite alternate linear;
+}
+
+@keyframes cloud-move{
+  from{
+    transform: translate(0, 50px);   /*translate(x,y) repositions an element in the horizontal and/or vertical direction by given values (e.g., 50px right and 50px top)*/
+  }
+  to{
+    transform: translate(200px, 50px);
+  }
+}
+
+.cloud-front{
+  animation: 30s cloud-move infinite alternate linear; /*animation: animation-duration animation-name animation-iteration-count animation-direction animation-timing-function;*/
+}
+
+@keyframes cloud-move-reverse{
+  from{
+    translate: transform(446px, 48px);
+  }
+  to{
+    transform: translate(100px, 48px);
+  }
+}
+
+.cloud-back{
+  animation: 34s cloud-move-reverse infinite alternate linear;
+}
+
+/*CSS preprocessors are programs used to extend the capabilities of CSS, enabling such common programming language functionalities as variables, nesting, inheritance, functions, and more complicated mathematical operations.
+ Because CSS preprocessors use a different language than CSS, however, everything needs to be translated, or “converted,” into plain CSS before it can be embedded in your production website. This is known as transpiling, and it's an extra step you absolutely can't forget.
+ 
+ The most common CSS preprocessors are Sass, Less, and Stylus.
+ 
+ Sass stands for “Syntactically Awesome Style Sheet.” Released in 2006, it’s the oldest CSS preprocessor around, and it offers a whole wealth of functionality options for extending CSS
+
+ if you’re talking about the preprocessor itself, use “Sass” (even if you’re using the SCSS syntax). If you’re already within the topic of “Sass,” however, and you’re specifically talking about the syntax, you can use “SCSS.”
+ 
+ Variables are used to store information you want to use multiple times throughout your stylesheet. They are defined by placing a $-sign in front of a variable name, followed by the CSS value
+ 
+ Functions are miniature operations that is executed the moment you use it. Custom functions can be written or use pre-built functions when using Sass. color functions one of the most useful functions.
+ 
+ SCSS allows nesting unlike CSS but even if the nested code looks good on SCSS it will not always translate over smoothly.
+ 
+ Inheritance refers to the ability of child classes to "take over" the CSS properties from a parent class template. This is done by the @extend functionality. You don't have to make entire separate classes for the child classes
+ Can create one class and extend it to another class by using @extend. Any properties to be shared between multiple classes are defined with a % 
+ 
+ Preprocessors like Sass have their own syntaxes that are transpiled into CSS.
+ A postprocessor, on the other hand, analyzes CSS using JavaScript and adds on CSS for specific purposes, for instance, backward compatibility for older browsers.*/
+
+
