@@ -162,11 +162,6 @@ body{
     margin-left: 15px;
   }
   
-  .page-header_item_img{
-    width: 10%;
-  }
-
-
   /* form */
 #contact-form {
   display: flex;
@@ -179,8 +174,6 @@ body{
   grid-template-columns: 40% 60%;
   grid-gap: 5px;
 }
-
-
 
   /* form ends */
   
@@ -214,7 +207,7 @@ body{
     }
   }
   
-  @media all and (max-width: 500px){
+  @media all and (min-width: 300px){
     .grid{
       -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
@@ -230,9 +223,17 @@ body{
     .page-header {
       width: 100vw;
     }
+    
+    .berlin-illustration{
+      display: flex;
+      size: 1%;
+    }
+    .page-header_item_img{
+      display: flex;
+    }
   }
   
-  @media all and (min-width: 500px) and (max-width: 750px){
+  @media all and (min-width: 300px) and (max-width: 1500px){
     .grid{
       -ms-grid-columns: 1fr 10px 1fr;
       grid-template-columns: 1fr 1fr;
