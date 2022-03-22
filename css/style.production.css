@@ -229,7 +229,7 @@ body{
       size: 1%;
     }
     .page-header_item_img{
-      display: flex;
+      display: block;
     }
   }
   
